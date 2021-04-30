@@ -31,7 +31,11 @@ class ContactController {
     return savedContact
   }
 
-  async show({ params, request, response, view }) {}
+  async show({ params, request, response, view }) {
+    const contact = await Contact.findOrFail(params.id)
+
+    return contact
+  }
 
   async update({ params, request, response }) {
     const contact = await Contact.findOrFail(params.id)
